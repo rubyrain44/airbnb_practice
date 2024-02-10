@@ -1,0 +1,21 @@
+.main {
+    background-image: url('../img/mountains.jpg');
+    height: 873px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 100px;
+    color: white;
+}
+
+.navBar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 100px;
+    color: white;
+    padding: 20px;
+}
