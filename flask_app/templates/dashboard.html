@@ -12,11 +12,22 @@
     <div class="main">
         
         <div class="navBar">
-            <h1>Welcome {{ session_user.first_name }}</h1>
+            <h1>Welcome {{ session_user.first_name }}!</h1>
+            <a href="#">Account</a>
         </div>
     
         <div class="mainContent">
-
+            <div class="actions">
+                <a href="/add_home">Add Vacation Home</a>
+            </div>
+            <div class="allHomes">
+                {% for home in homes %}
+                    <div class="vacaHomeResult">
+                        <h5>{{ home.street }}</h5>
+                        <p>{{ home.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
     </div>

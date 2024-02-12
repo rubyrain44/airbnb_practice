@@ -47,6 +47,7 @@ class Home:
                 'id': row['users.id'],
                 'first_name': row['first_name'],
                 'last_name': row['last_name'],
+                'username' : row['username'],
                 'email': row['email'],
                 'password': row['password'],
                 'created_at': row['users.created_at'],
@@ -81,6 +82,7 @@ class Home:
             'id': results[0]['users.id'],
             'first_name': results[0]['first_name'],
             'last_name': results[0]['last_name'],
+            'username' : results[0]['username'],
             "email": results[0]['email'],
             "password": results[0]['password'],
             "created_at": results[0]['users.created_at'],
@@ -92,12 +94,25 @@ class Home:
 
 # OTHER METHODS -------------------------------------------
 
+        self.id = data['id']
+        self.street = data['id']
+        self.city = data['city']
+        self.state = data['state']
+        self.bedrooms = data['bedrooms']
+        self.bathrooms = data['bathrooms']
+        self.amenities = data['amenities']
+        self.description = data['description']
+        self.user_id = data['user_id']
+        self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
+        self.creator = None
+
     @classmethod
     def add_home(cls, data):
         query = """
                 INSERT INTO homes
-                (title, description, user_id) VALUES
-                (%(title)s, %(description)s, %(user_id)s);
+                (street, city, state, bedrooms, bathrooms, amenities, description, user_id) VALUES
+                (%(street)s, %(city)s, %(state)s, %(bedrooms)s, %(bathrooms)s, %(amenities)s, %(description)s, %(user_id)s);
                 """
         return connectToMySQL('vacation_app').query_db(query, data)
 
@@ -105,7 +120,7 @@ class Home:
     def edit_home(cls, data):
         query = """
                 UPDATE homes SET
-                title=%(title)s, description=%(description)s, updated_at = NOW ()
+                street=%(street)s, city=%(city)s, state=%(state)s, bedrooms=%(bedrooms)s, bathrooms=%(bathrooms)s, amenities=%(amenities)s, description=%(description)s, updated_at = NOW ()
                 WHERE id = %(id)s;
                 """
         return connectToMySQL('vacation_app').query_db(query, data)
@@ -122,7 +137,7 @@ class Home:
 
 # VALIDATIONS FOR MAGAZINE CREATION
     @staticmethod
-    def validate_homes(form_data):
+    def validate_home(form_data):
         is_valid = True
         if len(form_data['street']) < 2:
             flash("Street must be at least 2 characters.")

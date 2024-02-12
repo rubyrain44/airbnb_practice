@@ -3,6 +3,7 @@ from flask_app import app
 from flask_bcrypt import Bcrypt 
 bcrypt = Bcrypt(app)
 from flask_app.models.user import User
+from flask_app.models.home import Home
 
 # MAIN PAGE - REGISTER/LOGIN
 @app.route('/')
@@ -15,7 +16,8 @@ def index():
 def dashboard():
     if 'user_id' in session:
         session_user = User.get_user({'id' : session['user_id']})
-        return render_template ('dashboard.html', session_user=session_user)
+        all_hosted_homes = Home.get_all_hosted_homes_with_user()
+        return render_template ('dashboard.html', session_user=session_user, homes = all_hosted_homes)
     return redirect ('/')
 
 # ACCOUNT PAGE

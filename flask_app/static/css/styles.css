@@ -1,6 +1,5 @@
-.main {
+body {
     background-image: url('../img/mountains.jpg');
-    height: 873px;
 }
 
 .header {
@@ -14,8 +13,41 @@
 .navBar {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
-    font-size: 100px;
     color: white;
     padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    margin: 20px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mainContent {
+    width: 700px;
+    height: 700px;
+    background-color: snow;
+    border-radius: 10%;
+    color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.actions {
+    border-bottom: 2px black solid;
+    width: 300px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
